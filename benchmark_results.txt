@@ -1,0 +1,29 @@
+Titan RTX 32 bit:
+PTB: 96 ms
+WikiText-2: 183 ms
+enwiki-8: 683 ms
+
+Titan RTX 16 bit:
+PTB: 91 ms
+WikiText-2: 163 ms
+enwiki-8: 200 ms
+
+pytorch-1.0.1-py3.6_cuda10.0.130_cudnn7.4.2_2
+ 
+ GPU activities:   63.52%  40.3867s    135135  298.86us  162.21us  4.0476ms  volta_sgemm_128x128_    nn
+  ¦ ¦ ¦ ¦ ¦ ¦ ¦ ¦ ¦10.40%  6.61023s     16136  409.66us  357.69us  5.1797ms  volta_fp16_sgemm_fp1    6_128x64_nn 
+  ¦ ¦ ¦ ¦ ¦ ¦ ¦ ¦ ¦ 7.69%  4.89100s     18015  271.50us  165.47us  14.364ms  volta_fp16_sgemm_fp1    6_128x128_tn
+  ¦ ¦ ¦ ¦ ¦ ¦ ¦ ¦ ¦ 3.96%  2.51885s       673  3.7427ms  106.72us  16.710ms  volta_fp16_sgemm_fp1    6_128x128_nt
+  ¦ ¦ ¦ ¦ ¦ ¦ ¦ ¦ ¦ 2.07%  1.31823s       106  12.436ms  4.9567ms  17.322ms  volta_fp16_sgemm_fp1    6_128x128_nn
+  ¦ ¦ ¦ ¦ ¦ ¦ ¦ ¦ ¦ 1.65%  1.04702s     66080  15.844us  9.0230us  2.9756ms  volta_sgemm_32x32_sl    iced1x4_nn
+
+
+BERT, 6 layers, 12 heads, batch 64, hidden 768:
+16-bit: 45 sec
+32-bit: 120 sec
+
+compiled with pytorch,  cudnn 7.4.2
+
+BERT, 6 layers, 12 heads, batch 64, hidden 768:
+16-bit: 45 sec
+32-bit: 119 sec 
