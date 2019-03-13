@@ -8,7 +8,21 @@ PTB: 91 ms
 WikiText-2: 163 ms
 enwiki-8: 200 ms
 
-pytorch-1.0.1-py3.6_cuda10.0.130_cudnn7.4.2_2
+RTX 2080 Ti 32 bit:
+PTB: 101 ms
+WikiText-2: 189 ms
+enwiki-8: 722 ms
+
+RTX 2080 Ti 16 bit:
+PTB: 97 ms
+WikiText-2: 166 ms
+enwiki-8: 260 ms
+
+CUDA 9.0
+GTX 1080 Xp 32 bit:
+PTB: 57 ms
+WikiText-2: 188 ms
+enwiki-8: 840 ms
  
  GPU activities:   63.52%  40.3867s    135135  298.86us  162.21us  4.0476ms  volta_sgemm_128x128_    nn
   ¦ ¦ ¦ ¦ ¦ ¦ ¦ ¦ ¦10.40%  6.61023s     16136  409.66us  357.69us  5.1797ms  volta_fp16_sgemm_fp1    6_128x64_nn 
@@ -18,12 +32,43 @@ pytorch-1.0.1-py3.6_cuda10.0.130_cudnn7.4.2_2
   ¦ ¦ ¦ ¦ ¦ ¦ ¦ ¦ ¦ 1.65%  1.04702s     66080  15.844us  9.0230us  2.9756ms  volta_sgemm_32x32_sl    iced1x4_nn
 
 
-BERT, 6 layers, 12 heads, batch 64, hidden 768:
-16-bit: 45 sec
-32-bit: 120 sec
+Titan RTX
+  pytorch-1.0.1-py3.6_cuda10.0.130_cudnn7.4.2_2
+  wikitext-2, split in half, remove sentences with length smaller than 100
+  BERT, 6 layers, 12 heads, batch 64, hidden 768:
+  16-bit: 11 sec
+  32-bit: 22 sec
 
-compiled with pytorch,  cudnn 7.4.2
+  compiled with pytorch,  cudnn 7.4.2
 
-BERT, 6 layers, 12 heads, batch 64, hidden 768:
-16-bit: 45 sec
-32-bit: 119 sec 
+  BERT, 6 layers, 12 heads, batch 64, hidden 768:
+  16-bit: 11 sec
+  32-bit: 22 sec 
+
+RTX 2080 Ti
+  pytorch-1.0.1-py3.6_cuda10.0.130_cudnn7.4.2_2
+  wikitext-2, split in half, remove sentences with length smaller than 100
+  BERT, 6 layers, 12 heads, batch 64, hidden 768:
+  16-bit: 12 sec
+  32-bit: 23 sec
+
+pytorch-1.0.1-py3.7_cuda9.0.176_cudnn7.4.2_2
+GTX 1080 XP
+  wikitext-2, split in half, remove sentences with length smaller than 100
+  BERT, 6 layers, 12 heads, batch 64, hidden 768:
+  16-bit: 24 sec
+  32-bit: 28 sec
+
+
+BERT fine-tune, language model batch size 24, small_wikipedia:
+RTX Titan:
+  16-bit: 317/19853 [01:00<1:01:55,  5.26it/s]
+  32-bit: 170/19853 [01:00<1:48:34,  3.02it/s
+
+RTX 2080 Ti:
+  16-bit: 271/19853 [01:00<1:16:54,  4.24it/s
+  32-bit: 150/19853 [01:00<2:09:58,  2.53it/s]
+
+GTX 1080 Xp:
+  16-bit: 56/19853 [01:00<5:42:16,  1.04s/it
+  32-bit: 95/19853 [01:00<3:22:41,  1.62it/s
